@@ -9,19 +9,46 @@
         <script src="js/fruit_and_veggies.js"></script>
         <script src="js/app.js"></script>
     </head>
-    <body>
+    <body ng-app="FruityVeg">
         <div class="container">
             <h1>Fruit and Veggies</h1>
-            <div class="row">
+            <div class="row" ng-controller="FruitVegList">
                 <div class="col-sm-4">
-                    col 1
+
+                    <table class="table">
+                        <tr>
+                            <th>Fruits</th>
+                        </tr>
+                        <tr ng-class="{'danger':item.fruits}" ng-repeat="item in fruits track by $index">
+                            <td>{{item}}</td>
+                            <td><button class="btn btn-danger" ng-click="returnRight($index)"> >> </button></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="col-sm-4">
-                    col 2
+                     <table class="table">
+                        <tr>
+                            <th>Fruits & Veggies</th>
+                        </tr>
+                        <tr ng-repeat="item in items track by $index">
+                            <td><button class="btn btn-danger"  ng-click="moveLeft($index)"> << </button></td>
+                            <td >{{item}}</td>
+                            <td><button class="btn btn-danger" ng-click="moveRight($index)"> >> </button></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="col-sm-4">
-                    col 3
-                </div>                        
+                     <table class="table">
+                        <tr>
+                            <th>Veggies</th>
+                        </tr>
+                        <tr ng-repeat="item in veggies track by $index">
+                             <td><button class="btn btn-danger" ng-click="returnLeft($index)"> << </button></td>
+                            <td>{{item}}</td>
+
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </body>
